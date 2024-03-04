@@ -1,0 +1,16 @@
+<?php
+// routing : duong dan truy cap
+// http://localhost/students/index.php?c=login&m=index
+// c : ten cua controller nam trong thu muc controller
+$c = trim($_GET['c'] ?? 'login');
+$c = ucfirst($c); // viet hoa chua cai dau tien
+// vd : LoginController
+
+switch($c){
+    case 'Login':
+        require APP_PATH_CONTROLLER . 'LoginController.php';
+    break;
+    default:
+        echo 'Not found request';
+    break;
+}
