@@ -35,6 +35,11 @@ if (!defined('APP_ROOT_PATH')) {
                                 Enter username and password, please !
                             </p>
                         <?php endif; ?>
+                        <?php if($state === 'fail'): ?>
+                            <p class="text-danger text-bold text-center">
+                                Account invalid.
+                            </p>
+                        <?php endif; ?>
                     </div>
                     <div class="card-body">
                         <form action="index.php?c=login&m=handle" method="post">

@@ -36,6 +36,21 @@ function handleLogin(){
         } else {
             // nguoi dung co nhap du thong tin
             $userInfo = checkLoginUser($username, $password);
+            if(empty($userInfo)){
+                // tai khoan khong ton tai trong db
+                header("Location:index.php?state=fail");
+            } else {
+                // tai khoan co ton tai trong db
+                // luu thong tin nguoi dung vao mang session
+                $_SESSION['username'] = $userInfo['username'];
+                $_SESSION['email']    = $userInfo['email'];
+                $_SESSION['phone']    = $userInfo['phone'];
+                $_SESSION['idAccount'] = $userInfo['id'];
+                $_SESSION['idUser']    = $userInfo['user_id'];
+                $_SESSION['idRole']    = $userInfo['role_id'];
+                // cho vao trang quan tri
+                header("Location:index.php?c=dashboard");
+            }
         }
     }
 }

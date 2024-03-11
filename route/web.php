@@ -9,8 +9,11 @@ $c = ucfirst($c); // viet hoa chua cai dau tien
 switch($c){
     case 'Login':
         require APP_PATH_CONTROLLER . 'LoginController.php';
-    break;
+        break;
+    case 'Dashboard':
+        require APP_PATH_CONTROLLER . 'DashboardController.php';
+        break;
     default:
         echo 'Not found request';
-    break;
+        break;
 }
