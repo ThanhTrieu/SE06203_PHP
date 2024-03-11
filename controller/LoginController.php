@@ -1,4 +1,6 @@
 <?php
+require "model/LoginModel.php"; // import model
+
 // http://localhost/students/index.php?c=login&m=index
 // m : ten ham nam trong controller
 // vd : index
@@ -33,6 +35,7 @@ function handleLogin(){
             header("Location:index.php?state=error");
         } else {
             // nguoi dung co nhap du thong tin
+            $userInfo = checkLoginUser($username, $password);
         }
     }
 }

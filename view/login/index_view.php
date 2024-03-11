@@ -20,12 +20,21 @@ if (!defined('APP_ROOT_PATH')) {
 </head>
 
 <body class="hold-transition sidebar-mini">
+    <?php
+        $state = trim($_GET['state'] ?? null);
+    ?>
     <div class="container-fluid">
         <div class="row">
             <div class="col-sm-12 col-md-6 offset-md-3">
                 <div class="card card-primary mt-3">
                     <div class="card-header">
                         <h3 class="card-title">Login</h3>
+                        <br/>
+                        <?php if($state === 'error'): ?>
+                            <p class="text-danger text-bold text-center">
+                                Enter username and password, please !
+                            </p>
+                        <?php endif; ?>
                     </div>
                     <div class="card-body">
                         <form action="index.php?c=login&m=handle" method="post">
