@@ -33,7 +33,7 @@ $namePage = 'Department';
         <div class="container-fluid">
             <div class="row">
                 <div class="col-sm-12 col-md-12">
-                    <h5> This is Department</h5>
+                    <a class="btn btn-primary" href="index.php?c=department&m=add"> Create new Department</a>
                 </div>
             </div>
         </div><!-- /.container-fluid -->
