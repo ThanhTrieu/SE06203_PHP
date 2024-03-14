@@ -72,7 +72,11 @@ function handleLogin(){
     }
 }
 function index(){
-    
+    if(isLoginUser()){
+        // da dang nhap roi, khong bat dang nhap lai nua.
+        header("Location:index.php?c=dashboard");
+        exit();
+    }
     // load view
     require APP_PATH_VIEW . 'login/index_view.php';
 }

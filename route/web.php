@@ -13,6 +13,9 @@ switch($c){
     case 'Dashboard':
         require APP_PATH_CONTROLLER . 'DashboardController.php';
         break;
+    case 'Department':
+        require APP_PATH_CONTROLLER . 'DepartmentController.php';
+        break;
     default:
         echo 'Not found request';
         break;
