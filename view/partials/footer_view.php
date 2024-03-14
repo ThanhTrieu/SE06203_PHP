@@ -50,7 +50,7 @@ if (!defined('APP_ROOT_PATH')) {
 <!-- AdminLTE App -->
 <script src="public/js/adminlte.js"></script>
 <!-- AdminLTE for demo purposes -->
-<!-- <script src="public/js/demo.js"></script> -->
+<script src="public/js/demo.js"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <!-- <script src="public/js/pages/dashboard.js"></script> -->
 </body>
