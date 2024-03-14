@@ -12,7 +12,10 @@ switch($m){
         break;
 }
 function index(){
-
+    if(!isLoginUser()){
+        header("Location:index.php");
+        exit();
+    }
     // load view
     require APP_PATH_VIEW . 'dashboard/index_view.php';
 }

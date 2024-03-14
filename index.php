@@ -5,6 +5,7 @@ if(session_status() == PHP_SESSION_NONE){
 }
 require 'config/constant.php';
 require 'helper/CommonHelper.php';
+require 'helper/LoginUserHelper.php';
 
 if(file_exists('route/web.php')){
     require 'route/web.php';

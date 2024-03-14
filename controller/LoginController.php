@@ -10,13 +10,30 @@ $m = strtolower($m); // chuyen ve chu thuong
 switch($m){
     case 'index':
         index();
-    break;
+        break;
     case 'handle':
         handleLogin();
-    break;
+        break;
+    case 'logout':
+        handleLogout();
+        break;
     default:
         echo 'Not found request';
-    break;
+        break;
+}
+function handleLogout(){
+    if(isset($_POST['btnLogout'])){
+        // nguoi thuc su muon logout ra ngoai
+        // xoa het cac session da tao ra o login
+        unset($_SESSION['username']);
+        unset($_SESSION['email']);
+        unset($_SESSION['phone']);
+        unset($_SESSION['idAccount']);
+        unset($_SESSION['idUser']);
+        unset($_SESSION['idRole']);
+        // quay ve lai trang dang nhap
+        header("Location:index.php");
+    }
 }
 function handleLogin(){
     // kiem tra nguoi bam submit login chua ?
