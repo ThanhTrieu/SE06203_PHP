@@ -41,7 +41,7 @@ $errorAdd = $_SESSION['error_department'] ?? null;
                             </h5>
                         </div>
                         <div class="card-body">
-                            <form method="post" action="index.php?c=department&m=handle-add">
+                            <form enctype="multipart/form-data" method="post" action="index.php?c=department&m=handle-add">
                                 <div class="row">
                                     <div class="col-sm-12 col-md-6">
                                         <div class="form-group mb-3">
@@ -70,6 +70,13 @@ $errorAdd = $_SESSION['error_department'] ?? null;
                                         <div class="form-group mb-3">
                                             <label> Date </label>
                                             <input type="date" class="form-control" name="beginning_date" />
+                                        </div>
+                                        <div class="form-group mb-3">
+                                            <label> Logo </label>
+                                            <input type="file" class="form-control" name="logo" />
+                                            <?php if(!empty($errorAdd['logo'])): ?>
+                                                <span class="text-danger"><?= $errorAdd['logo']; ?></span>
+                                            <?php endif; ?>
                                         </div>
                                     </div>
                                 </div>
