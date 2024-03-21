@@ -2,8 +2,8 @@
 if (!defined('APP_ROOT_PATH')) {
     die('Can not access');
 }
-
 $namePage = 'Department';
+$state = trim($_GET['state'] ?? null);
 ?>
 <!-- load header view -->
 <?php require APP_PATH_VIEW . "partials/header_view.php"; ?>
@@ -34,6 +34,50 @@ $namePage = 'Department';
             <div class="row">
                 <div class="col-sm-12 col-md-12">
                     <a class="btn btn-primary" href="index.php?c=department&m=add"> Create new Department</a>
+
+                    <?php if($state === 'delete_success'): ?>
+                        <div class="my-3 text-success">
+                            Delete department Successfully !
+                        </div>
+                    <?php elseif( $state === 'delete_failure'): ?>
+                        <div class="my-3 text-danger">
+                            Delete department Failure !
+                        </div>
+                    <?php endif; ?>
+
+                    <table class="mt-3 table table-bordered table-striped">
+                        <thead class="table-primary">
+                            <tr>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Logo</th>
+                                <th>Leader</th>
+                                <th>Date</th>
+                                <th>Status</th>
+                                <th width="10%" class="text-center" colspan="2">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php foreach($departments as $key => $item): ?>
+                                <tr>
+                                    <td><?= $item['id']; ?></td>
+                                    <td><?= $item['name'] ?></td>
+                                    <td width="10%">
+                                        <img class="img-fluid" alt="<?= $item['name']; ?>" src="public/uploads/images/<?= $item['logo']; ?>" />
+                                    </td>
+                                    <td><?= $item['leader']; ?></td>
+                                    <td><?= $item['beginning_date']; ?></td>
+                                    <td><?= $item['status'] == 1 ? 'Active' : 'Deactive'; ?></td>
+                                    <td>
+                                        <a class="btn btn-info btn-sm" href="index.php?c=department&m=edit&id=<?= $item['id'];?>"> Edit</a>
+                                    </td>
+                                    <td>
+                                        <a class="btn btn-danger btn-sm" href="index.php?c=department&m=delete&id=<?= $item['id'];?>"> Delete</a>
+                                    </td>
+                                </tr>
+                            <?php endforeach; ?>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div><!-- /.container-fluid -->
