@@ -45,6 +45,12 @@ $state = trim($_GET['state'] ?? null);
                         </div>
                     <?php endif; ?>
 
+                    <?php if( $state === 'success'): ?>
+                        <div class="my-3 text-success text-center">
+                            Action Successfully !
+                        </div>
+                    <?php endif; ?>
+
                     <table class="mt-3 table table-bordered table-striped">
                         <thead class="table-primary">
                             <tr>

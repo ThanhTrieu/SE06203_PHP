@@ -107,7 +107,7 @@ function handleUpdate()
             );
             if($update){
                 // thanh cong
-                header("Location:index.php?c=department&state_update=success");
+                header("Location:index.php?c=department&state=success");
             } else {
                 // that bai
                 header("Location:index.php?c=department&m=edit&id={$id}&state=failure");
