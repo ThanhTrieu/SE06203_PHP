@@ -215,7 +215,8 @@ function Add()
 }
 function index()
 {
-
-    $departments = getAllDataDepartments();
+    $keyword = trim($_GET['search'] ?? null);
+    $keyword = strip_tags($keyword);
+    $departments = getAllDataDepartments($keyword);
     require APP_PATH_VIEW . 'departments/index_view.php';
 }

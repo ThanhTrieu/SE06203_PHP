@@ -16,6 +16,9 @@ switch($c){
     case 'Department':
         require APP_PATH_CONTROLLER . 'DepartmentController.php';
         break;
+    case 'Course':
+        require APP_PATH_CONTROLLER . 'CourseController.php';
+        break;
     default:
         echo 'Not found request';
         break;

@@ -34,7 +34,23 @@ $state = trim($_GET['state'] ?? null);
             <div class="row">
                 <div class="col-sm-12 col-md-12">
                     <a class="btn btn-primary" href="index.php?c=department&m=add"> Create new Department</a>
-
+                    <div class="row">
+                        <div class="col-sm-12 col-md-6">
+                            <div class="form-group my-3">
+                                <input
+                                    id="keywordDepartment"
+                                    type="text" name="search"
+                                    value="<?= htmlentities($keyword); ?>"
+                                />
+                                <button
+                                    id="btnSearchDepartment"
+                                    type="button"
+                                    class="btn btn-primary btn-sm mb-0"
+                                > Search</button>
+                                <a class="btn btn-info btn-sm" href="index.php?c=department"> Back to list</a>
+                            </div>
+                        </div>
+                    </div>
                     <?php if($state === 'delete_success'): ?>
                         <div class="my-3 text-success">
                             Delete department Successfully !
@@ -94,3 +110,16 @@ $state = trim($_GET['state'] ?? null);
 
 <!-- load footer view -->
 <?php require APP_PATH_VIEW . "partials/footer_view.php"; ?>
+<script type="text/javascript">
+    let btnSearch = document.getElementById('btnSearchDepartment');
+    btnSearch.addEventListener('click', function(){
+        let keyword = document.getElementById('keywordDepartment');
+        let valueKeyword = keyword.value.trim();
+        if(valueKeyword != ''){
+            window.location.href = "index.php?c=department&search=" + valueKeyword;
+        } else {
+            alert("Enter keyword, please");
+            return;
+        }
+    });
+</script>

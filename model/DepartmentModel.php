@@ -70,12 +70,15 @@ function deleteDepartmentById($id = 0){
     disconnectionDb($db);
     return $checkDelete;
 }
-function getAllDataDepartments(){
+function getAllDataDepartments($keyword = null){
     $db = connectionDb();
-    $sql = "SELECT * FROM `departments` WHERE `deleted_at` IS NULL";
+    $key = "%{$keyword}%";
+    $sql = "SELECT * FROM `departments` WHERE (`name` LIKE :keyword OR `leader` LIKE :leader) AND `deleted_at` IS NULL";
     $stmt = $db->prepare($sql);
     $dataDepartments = [];
     if($stmt){
+        $stmt->bindParam(':keyword', $key, PDO::PARAM_STR);
+        $stmt->bindParam(':leader', $key, PDO::PARAM_STR);
         if($stmt->execute()){
             if($stmt->rowCount() > 0){
                 $dataDepartments = $stmt->fetchAll(PDO::FETCH_ASSOC);
