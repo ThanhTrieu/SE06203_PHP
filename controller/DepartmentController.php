@@ -43,12 +43,13 @@ function handleUpdate()
 
         $beginningDate = trim($_POST['beginning_date'] ?? null);
         $beginningDate = date('Y-m-d', strtotime($beginningDate));
-
+        
         $info = getDetailDepartmentById($id);
         // check du lieu
         $_SESSION['error_department'] = [];
         // tien hanh upload logo cua khoa
         $logo = $info['logo'] ?? null;
+
         $_SESSION['error_department']['logo'] = null;
         if (!empty($_FILES['logo']['tmp_name'])) {
             // thuc su nguoi dung muon upload logo
@@ -58,6 +59,7 @@ function handleUpdate()
                 ['image/png', 'image/jpeg', 'image/jpg', 'image/svg'],
                 3 * 1024 * 1024
             );
+            
             if (empty($logo)) {
                 $_SESSION['error_department']['logo'] = 'Type file is allow .png, .jpg, .jpeg, .svg and size file <= 3Mb';
             } else {
@@ -91,6 +93,24 @@ function handleUpdate()
             // tien hanh update vao database
             if(isset($_SESSION['error_department'])){
                 unset($_SESSION['error_department']);
+            }
+            $slug = slugify($name);
+            
+            $update = updateDepartmentById(
+                $name,
+                $slug,
+                $leader,
+                $status,
+                $beginningDate,
+                $logo,
+                $id
+            );
+            if($update){
+                // thanh cong
+                header("Location:index.php?c=department&state_update=success");
+            } else {
+                // that bai
+                header("Location:index.php?c=department&m=edit&id={$id}&state=failure");
             }
         }
     }
